@@ -1,0 +1,46 @@
+<!-- templates/registration/login.html -->
+<!DOCTYPE html>
+<head>
+	<title>Rent Car|login</title>
+	<style>
+		body{
+			border:5px solid #74A18E;
+		}
+		header{
+			font-size: 100px;
+			background-color: #74A18E;
+			color: white;
+			text-align: center;
+		}
+		section{
+
+			background-color:white;
+			padding: 1% 10% 10% 10%;
+		}
+		button{
+    	color: white;
+    	background-color: #74A18E;
+    	}
+    	a{
+    		color: white;
+    	}
+		
+	</style>
+<head>
+<body>
+	<header>
+		<h>Rent Car</h>
+	</header>
+	<section>
+		<center>
+		<div class="login">
+		<h1>Login</h1>
+		<form method="post">
+		  {% csrf_token %}
+		  {{ form.as_p }}
+		  <button type="submit">Login</button>
+		</form>
+		</div>
+		</center>
+	</section>
+</body>

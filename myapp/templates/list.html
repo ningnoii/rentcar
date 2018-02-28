@@ -1,0 +1,20 @@
+
+{% block content %}
+<h1>Cars</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12" >
+      {% for p in object_list %}
+              <p>model: {{ p.model }}</p>
+              <p>detail: {{ p.detail }}</p>
+              <p>price: {{ p.price }}</p>
+              <br>
+      {% empty %}
+          <div class="jumbotron">
+          <h1>No car!</h1>  
+          </div>
+      {% endfor %}
+    </div>  
+  </div>
+</div>
+{% endblock %}

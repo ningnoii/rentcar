@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<head>
+  <title>Rent Car|Car list</title>
+  <style>
+    body{
+     border:5px solid #74A18E;
+    }
+    header{
+      font-size: 100px;
+      background-color: #74A18E;
+      color: white;
+      text-align: center;
+    }
+    section{
+  
+    }
+    .list{
+      width: 60%;
+      margin-left: 20%;
+      margin-right: 20%;
+     
+      border:5px solid darkgray;
+    }
+    h2{
+      font-size: 40px;
+    }
+    h1{
+      font-size: 50px;
+      text-align: center;
+    }
+    .rent{
+    	border:5px solid darkgray;
+    	margin: 0% 20%;
+    	padding: 0.5% 2%;
+    }
+    .info{
+    	text-align: left;
+    }
+    p{
+    	font-size: 22px;
+    }
+    button{
+    	color: white;
+    	background-color: #74A18E;
+    }
+    a{
+    	color: white;
+    }
+  </style>
+<head>
+<body>
+	 <header>
+    <h>Rent Car</h>
+  </header>
+  <section>
+{% load crispy_forms_tags %}
+{% if user.is_authenticated %}
+     <h1> Welcome, {{ user.username }}! <h1>
+	{% block content %}
+
+	<div class="rent">
+		<div class="info">
+		<h2>Rent Car:</h2>
+		 <p>{% csrf_token %}</p>
+		  <p>{{ form.as_p }}</p>
+		 </div>
+		{% endblock %}
+	</div>
+{% else %}
+       <p>You are not logged in</p>
+         <a href="{% url 'login' %}">login</a>
+ {% endif %}  
+ <button><a href="{% url 'cars_list'%}">rent car</a></button>
+</section>
+</body>

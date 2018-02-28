@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+  <title>Rent Car|Car list</title>
+  <style>
+    body{
+     border:5px solid #74A18E;
+    }
+    header{
+      font-size: 100px;
+      background-color: #74A18E;
+      color: white;
+      text-align: center;
+    }
+    section{
+  
+    }
+    .list{
+      width: 60%;
+      margin-left: 20%;
+      margin-right: 20%;
+     
+      border:5px solid darkgray;
+    }
+    h6{
+      margin: 2%;
+      font-size: 25px;
+      text-align: left;
+    }
+    h2{
+      font-size: 40px;
+    }
+    h1{
+      font-size: 50px;
+      text-align: center;
+    }
+
+    p{
+      margin-left: 10%;
+      font-size: 22px;
+      text-align: left;
+    }
+    .model{
+      font-size: 28px;
+      color:#009688;
+    }
+  </style>
+<head>
+<body>
+  <header>
+    <h>Rent Car</h>
+  </header>
+  <section>
+    {% block content %}
+      {% if user.is_authenticated %}
+          <h1> Welcome, {{ user.username }}! <h1>
+          <div class= "list">
+          <h2>Cars</h2>
+          <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12" >
+              {% for p in object_list %}
+                      <p class="model">Model: {{ p.model }}</p>
+                      <p>detail: {{ p.detail }} price: {{ p.price }}</p>
+                      <!-- price: {{ p.price }} -->
+              {% empty %}
+                  <div class="jumbotron">
+                  <h1>No car!</h1>  
+                  </div>
+              {% endfor %}
+            </div>
+            </div>  
+          </div>
+          </div>
+          <div class="button">
+            <button><a href="{% url 'rent_car'%}">rent car</a></button>
+          </div>
+      {% else %}
+           <p>You are not logged in</p>
+             <a href="{% url 'login' %}">login</a>
+      {% endif %}    
+    {% endblock %}
+    </section>
+</body>
